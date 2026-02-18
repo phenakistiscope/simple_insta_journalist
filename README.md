@@ -2,7 +2,7 @@
 
 UNDER CONSTRUCTION...
 
-A complete pipeline for collecting, enriching, and analyzing Instagram data for academic research and analysis purposes.
+A complete pipeline for collecting, enriching, and analyzing Instagram data for journalists.
 
 ---
 

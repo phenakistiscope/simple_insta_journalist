@@ -198,40 +198,6 @@ https://hikerapi.com/
 
 ---
 
-## Example Analysis
-
-### Basic Statistics
-
-```python
-import pandas as pd
-
-df = pd.read_csv('instagram_extraction_20260213_142925.csv')
-
-# Posts analyzed
-posts = df[df['Type_donnee'] == 'POST']
-print(f"Total posts: {len(posts)}")
-
-# Total interactions
-print(f"Total comments: {len(df[df['Type_donnee'] == 'Commentaire'])}")
-print(f"Total replies: {len(df[df['Type_donnee'] == 'Réponse'])}")
-print(f"Total likes: {len(df[df['Type_donnee'] == 'LIKE'])}")
-
-# Engagement per post
-engagement = df.groupby('URL_originale').size()
-print(engagement.head())
-
-# Top commenters
-comments = df[df['Type_donnee'].isin(['Commentaire', 'Réponse'])]
-top_commenters = comments['Donnee_utilisateur'].value_counts().head(10)
-print(top_commenters)
-
-# Verified users
-verified_count = df[df['Donnee_verifie'] == True].groupby('Type_donnee').size()
-print(verified_count)
-```
-
----
-
 ## Legal Notice
 
 ### Compliance

@@ -1,6 +1,6 @@
 # Simple Instagram Data Collection Pipeline for Journalist
 
-UNDER CONSTRUCTION...
+[TESTING...]
 
 A complete pipeline for collecting, enriching, and analyzing Instagram data for journalists.
 

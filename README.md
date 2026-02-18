@@ -293,7 +293,6 @@ https://hikerapi.com/
 | Comments | Full count | All | Complete access |
 | Replies | Included in count | All | Complete access |
 
-**Note:** Total counts are always accurate. The limitation is on retrieving individual user lists for likes.
 
 ### Rate Limits
 
@@ -355,14 +354,6 @@ print(verified_count)
 
 ## Legal Notice
 
-### Intended Use
-
-This tool is designed for:
-- Academic research
-- Non-commercial analysis
-- Educational purposes
-- Digital humanities projects
-
 ### Compliance
 
 Users must comply with:
@@ -385,7 +376,7 @@ Users must comply with:
 
 ### Disclaimer
 
-- This tool is for research purposes only
+- This tool is for journalist purposes only
 - Users are solely responsible for legal compliance
 - Authors assume no liability for misuse
 - Check local laws and regulations
@@ -404,7 +395,6 @@ Users must comply with:
 **Author:**  
 Adrien Jeanrenaud  
 Digital Humanities — Data & Image Analysis  
-University of Geneva
 
 **Tools:**
 - Zeeschuimer — Digital Methods Initiative
@@ -417,15 +407,13 @@ University of Geneva
 
 **Documentation:**
 - HikerAPI: https://hiker-doc.readthedocs.io/
-- Pandas: https://pandas.pydata.org/docs/
 
 **Related Projects:**
 - Zeeschuimer: https://github.com/digitalmethodsinitiative/zeeschuimer
 - 4CAT: https://github.com/digitalmethodsinitiative/4cat
-- Instaloader: https://github.com/instaloader/instaloader
 
 ---
 
 **Version:** 1.0.0  
 **Last Updated:** February 2026  
-**License:** MIT (for code) / Users must comply with Instagram ToS (for data)
+**License:** Users must comply with Instagram ToS (for data)

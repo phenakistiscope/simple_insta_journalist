@@ -73,9 +73,9 @@ def ask_for_csv(prompt="Enter path to input CSV file: "):
         print_success(f"File loaded: {path}")
         return path
 
-
+"""
 def ask_for_column():
-    """Ask user which column contains URLs"""
+    Ask user which column contains URLs
     print_info("Which column contains the URLs?")
     print("  1. 'url' (default)")
     print("  2. 'URL'")
@@ -104,7 +104,7 @@ def ask_for_column():
 
 
 def ask_for_output_format():
-    """Ask user for output format"""
+    Ask user for output format
     print_info("Select output format:")
     print("  1. Python list (post_urls.py)")
     print("  2. Text file - one URL per line (post_urls.txt)")
@@ -121,7 +121,7 @@ def ask_for_output_format():
 
 
 def ask_for_output_filename(default="post_urls"):
-    """Ask user for output filename"""
+    Ask user for output filename
     filename = input(f"{Colors.BLUE}Enter output filename (without extension, default: {default}): {Colors.RESET}").strip()
     
     if not filename:
@@ -132,7 +132,7 @@ def ask_for_output_filename(default="post_urls"):
     
     return filename
 
-
+"""
 def extract_urls(input_csv, column_name, output_format, output_base):
     """Extract URLs from CSV and save in specified format(s)"""
     urls = []
@@ -225,15 +225,15 @@ def main():
         
         # Step 2: Get column name
         print()
-        column_name = ask_for_column()
+        column_name = "url" #ask_for_column()
         
         # Step 3: Get output format
         print()
-        output_format = ask_for_output_format()
+        output_format = "text" #ask_for_output_format()
         
         # Step 4: Get output filename
         print()
-        output_base = ask_for_output_filename()
+        output_base = "temp" #ask_for_output_filename()
         
         # Step 5: Extract and save
         print()

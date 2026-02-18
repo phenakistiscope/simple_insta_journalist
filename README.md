@@ -12,8 +12,6 @@ A complete pipeline for collecting, enriching, and analyzing Instagram data for 
 - [Overview](#overview)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Output Structure](#output-structure)
-- [Configuration](#configuration)
 - [Pipeline Workflow](#pipeline-workflow)
 - [Limitations](#limitations)
 - [Legal Notice](#legal-notice)

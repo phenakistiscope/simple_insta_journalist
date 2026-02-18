@@ -9,7 +9,7 @@ DO NOT share this file with your token!
 
 # Your HikerAPI access key
 # Get it from: https://hikerapi.com/
-HIKERAPI_TOKEN = "<YOUR_TOKEN_HERE>"
+HIKERAPI_TOKEN = "62npus4f4czlupbabvk3i1jg6knb9amt"
 
 # ============================================
 # EXTRACTION PARAMETERS

@@ -101,6 +101,88 @@ def ask_for_urls():
         print_error("Invalid choice")
         return ask_for_urls()
 
+def validate_token_with_api(token):
+    """
+    Validate HikerAPI token by making a test API call
+    Returns (is_valid, error_message)
+    """
+    try:
+        print_info("Validating HikerAPI token...")
+        
+        # Try to create client and make a simple API call
+        test_client = Client(token=token)
+        
+        # Test with a known public Instagram post
+        test_shortcode = "CIN6J9yLRvy"  # Example post
+        test_client.media_by_code_v1(test_shortcode)
+        
+        print_success("Token is valid")
+        return True, None
+        
+    except Exception as e:
+        error_msg = str(e)
+        
+        # Check for common error types
+        if "401" in error_msg or "Unauthorized" in error_msg or "authentication" in error_msg.lower():
+            return False, "Invalid token - Authentication failed"
+        elif "403" in error_msg or "Forbidden" in error_msg:
+            return False, "Token rejected - Access denied"
+        elif "429" in error_msg or "rate limit" in error_msg.lower():
+            return False, "Rate limit exceeded - Wait and try again"
+        elif "404" in error_msg:
+            return False, "API endpoint not found - Token might be invalid"
+        else:
+            return False, f"Token validation failed: {error_msg[:100]}"
+
+
+def prompt_for_token():
+    """
+    Prompt user to enter token in terminal
+    Returns the token string
+    """
+    print()
+    print_warning("HikerAPI token not configured in config.py")
+    print_info("You can get a token from: https://hikerapi.com/")
+    print()
+    
+    token = input(f"{Colors.BLUE}Enter your HikerAPI access key: {Colors.RESET}").strip()
+    
+    if not token:
+        print_error("No token provided")
+        return None
+    
+    # Validate the token
+    is_valid, error_msg = validate_token_with_api(token)
+    
+    if not is_valid:
+        print_error(error_msg)
+        retry = input(f"{Colors.YELLOW}Try again? (y/n): {Colors.RESET}").lower()
+        if retry == 'y':
+            return prompt_for_token()
+        return None
+    
+    # Ask if user wants to save to config.py
+    save = input(f"{Colors.BLUE}Save token to config.py? (y/n): {Colors.RESET}").lower()
+    if save == 'y':
+        try:
+            config_path = Path("config.py")
+            with open(config_path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            
+            # Replace token
+            new_content = content.replace(
+                'HIKERAPI_TOKEN = "<YOUR_TOKEN_HERE>"',
+                f'HIKERAPI_TOKEN = "{token}"'
+            )
+            
+            with open(config_path, 'w', encoding='utf-8') as f:
+                f.write(new_content)
+            
+            print_success("Token saved to config.py")
+        except Exception as e:
+            print_warning(f"Could not save to config.py: {e}")
+    
+    return token
 
 # ============================================
 # DATA EXTRACTION FUNCTIONS
@@ -472,10 +554,28 @@ def main():
     """Main execution function"""
     print_header("INSTAGRAM BATCH SCRAPER")
     
-    # Validate configuration
+    # Check token configuration
+    global HIKERAPI_TOKEN
+    if HIKERAPI_TOKEN == "<YOUR_TOKEN_HERE>" or not HIKERAPI_TOKEN:
+        HIKERAPI_TOKEN = prompt_for_token()
+        if not HIKERAPI_TOKEN:
+            print_error("Cannot proceed without valid token")
+            sys.exit(1)
+    else:
+        # Validate configured token
+        is_valid, error_msg = validate_token_with_api(HIKERAPI_TOKEN)
+        if not is_valid:
+            print_error(f"Configured token is invalid: {error_msg}")
+            HIKERAPI_TOKEN = prompt_for_token()
+            if not HIKERAPI_TOKEN:
+                sys.exit(1)
+    
+    # Validate other configuration
     if not validate_config():
         print_error("Please fix configuration errors in config.py")
         sys.exit(1)
+    
+    # ... rest of main() stays the same
     
     # Get URLs
     print_info("Loading URLs...")

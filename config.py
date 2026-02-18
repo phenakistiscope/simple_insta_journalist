@@ -9,7 +9,7 @@ DO NOT share this file with your token!
 
 # Your HikerAPI access key
 # Get it from: https://hikerapi.com/
-HIKERAPI_TOKEN = "62npus4f4czlupbabvk3i1jg6knb9amt"
+HIKERAPI_TOKEN = "<YOUR_TOKEN_HERE>"
 
 # ============================================
 # EXTRACTION PARAMETERS
@@ -37,7 +37,7 @@ DELAY_AFTER_ERROR = 10.0
 # ============================================
 
 # Input file (URLs to scrape)
-INPUT_URLS_FILE = "post_urls.txt"  # Text file with one URL per line
+INPUT_URLS_FILE = "temp.txt"  # Text file with one URL per line
 
 # Output directory
 OUTPUT_DIRECTORY = "output"

@@ -239,7 +239,7 @@ Users must comply with:
 ## Credits
 
 **Author:**  
-Adrien Jeanrenaud  
+Adrien J.
 Digital Humanities — Data & Image Analysis  
 
 **Tools:**
